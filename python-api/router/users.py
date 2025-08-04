@@ -8,14 +8,14 @@ from sqlalchemy.orm import Session
 router = APIRouter(prefix="/users", tags=["users"])
 
 
-@router.post("/post", response_model=List[schemas.CreateUser])
+@router.post("/post", response_model=List[schemas.ResponseUser])
 def test_posts(db: Session = Depends(get_db)):
     posts = db.query(models.User).all()
     return posts
 
 
 @router.post(
-    "/create", status_code=status.HTTP_201_CREATED, response_model=schemas.CreateUser
+    "/create", status_code=status.HTTP_201_CREATED, response_model=schemas.ResponseUser
 )
 def create_posts(post: schemas.CreateUser, db: Session = Depends(get_db)):
     new_post = models.User(**post.model_dump())
@@ -26,7 +26,7 @@ def create_posts(post: schemas.CreateUser, db: Session = Depends(get_db)):
     return new_post
 
 
-@router.get("/{user_id}", response_model=schemas.CreateUser)
+@router.get("/{user_id}", response_model=schemas.ResponseUser)
 def get_user(user_id: int, db: Session = Depends(get_db)):
     user = db.query(models.User).filter(models.User.id == user_id).first()
     db.commit()
@@ -36,7 +36,7 @@ def get_user(user_id: int, db: Session = Depends(get_db)):
 
 
 # Get first 10 users
-@router.get("/", response_model=List[schemas.CreateUser])
+@router.get("/", response_model=List[schemas.ResponseUser])
 def get_users(db: Session = Depends(get_db)):
     users = db.query(models.User).limit(10).all()
     db.commit()
