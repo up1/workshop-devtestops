@@ -1,15 +1,13 @@
-from typing import Union
-
 from fastapi import FastAPI
+from router.users import router
 
 app = FastAPI()
+app.include_router(router)
 
+@app.get("/ping")
+async def ping():
+    return {"message": "pong"}
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
-
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
+@app.get("/health")
+async def health():
+    return {"status": "healthy"}

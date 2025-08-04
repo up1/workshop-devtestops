@@ -1,2 +1,6 @@
 fastapi[standard]
 pydantic
+sqlalchemy
+asyncpg
+databases
+psycopg2

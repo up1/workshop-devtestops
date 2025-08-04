@@ -4,6 +4,12 @@
 
 ## REST API with Python and [FastAPI](https://fastapi.tiangolo.com/)
 
+### Start PostgreSQL database
+```
+$docker compose up -d postgres
+$docker compose ps
+```
+
 ### Build and Run
 ```
 $docker compose build python-api
@@ -14,6 +20,9 @@ $docker compose ps
 URL of Swagger or OpenAPI documentation
 * http://localhost:8000/docs
 
+### API testing with Postman and [newman](https://www.npmjs.com/package/newman)
+```
+```
 
 ## Web UI Testing with Selenium and Robot framework
 
