@@ -1,6 +1,10 @@
 # DevTestOps
-* [Selenium Grid](https://github.com/SeleniumHQ/docker-selenium)
-* [Robotframework](https://robotframework.org/)
+* Python + FastAPI + PostgreSQL
+* .NET 8 + PostgreSQL
+* API testing with Postman and newman
+* UI Testing
+    * [Selenium Grid](https://github.com/SeleniumHQ/docker-selenium)
+    * [Robotframework](https://robotframework.org/)
 
 ## 1. REST API with Python and [FastAPI](https://fastapi.tiangolo.com/)
 
