@@ -1,0 +1,134 @@
+{
+	"info": {
+		"_postman_id": "6d879595-0cfb-409e-86cc-54192fe13f3c",
+		"name": "dotnet-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "1453931",
+		"_collection_link": "https://red-firefly-245852.postman.co/workspace/FullStack~9946c0fb-b821-4fe1-ad63-82fbf95500c7/collection/1453931-6d879595-0cfb-409e-86cc-54192fe13f3c?action=share&source=collection_link&creator=1453931"
+	},
+	"item": [
+		{
+			"name": "Create-new-user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const response = pm.response.json();",
+							"",
+							"// JSON Schema for validation",
+							"const schema = {",
+							"    type: \"object\",",
+							"    properties: {",
+							"        id: { type: \"integer\" },",
+							"        email: { type: \"string\", format: \"email\" },",
+							"        username: { type: \"string\" },",
+							"        created_at: { type: \"string\" }",
+							"    },",
+							"    required: [\"id\", \"email\", \"username\", \"created_at\"]",
+							"};",
+							"",
+							"// Validate response against the schema",
+							"pm.test(\"Response matches JSON schema\", function() {",
+							"    const Ajv = require(\"ajv\");",
+							"    const ajv = new Ajv();",
+							"    const validate = ajv.compile(schema);",
+							"    const valid = validate(response);",
+							"    ",
+							"    pm.expect(valid).to.be.true;",
+							"    if (!valid) {",
+							"        console.log(validate.errors);",
+							"    }",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"demo-username\",\n  \"email\": \"demo-email@xxx.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://dotnet-api:8080/api/User/create"
+			},
+			"response": []
+		},
+		{
+			"name": "Get all users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const response = pm.response.json();",
+							"",
+							"pm.test(\"Response has valid JSON schema\", function () {",
+							"    const schema = {",
+							"        type: \"array\",",
+							"        items: {",
+							"            type: \"object\",",
+							"            properties: {",
+							"                email: { type: \"string\" },",
+							"                username: { type: \"string\" }",
+							"            },",
+							"            required: [\"email\", \"username\"]",
+							"        }",
+							"    };",
+							"",
+							"    const Ajv = require(\"ajv\");",
+							"    const ajv = new Ajv();",
+							"    const validate = ajv.compile(schema);",
+							"    const valid = validate(response);",
+							"",
+							"    pm.expect(valid).to.be.true;",
+							"    if (!valid) {",
+							"        console.log(validate.errors);",
+							"    }",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"demo-username\",\n  \"email\": \"demo-email\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://dotnet-api:8080/api/User/users"
+			},
+			"response": []
+		}
+	]
+}

@@ -2,7 +2,7 @@
 * [Selenium Grid](https://github.com/SeleniumHQ/docker-selenium)
 * [Robotframework](https://robotframework.org/)
 
-## REST API with Python and [FastAPI](https://fastapi.tiangolo.com/)
+## 1. REST API with Python and [FastAPI](https://fastapi.tiangolo.com/)
 
 ### Start PostgreSQL database
 ```
@@ -26,7 +26,7 @@ $docker compose up python-api-test --abort-on-container-exit
 ```
 Report is generated in folder `postman/reports/`
 
-## REST API with .NET 
+## 2. REST API with .NET 8
 * https://learn.microsoft.com/en-us/dotnet/core/docker/introduction
 
 ### Start PostgreSQL database
@@ -44,6 +44,12 @@ $docker compose ps
 
 URL of Swagger or OpenAPI documentation
 * http://localhost:9000/swagger/index.html
+
+### API testing with Postman and [newman](https://www.npmjs.com/package/newman)
+```
+$docker compose up dotnet-api-test --abort-on-container-exit
+```
+Report is generated in folder `postman/reports/`
 
 ## Web UI Testing with Selenium and Robot framework
 

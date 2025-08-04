@@ -13,9 +13,10 @@ public class UserRepository: IUserRepository
         return await _context.Users.AsNoTracking().ToListAsync();
     }
 
-    public async Task<bool> Create(User user)
+    public async Task<User> Create(User user)
     {
         _context.Users.Add(user);
-        return await _context.SaveChangesAsync() > 0;
+        await _context.SaveChangesAsync();
+        return user;
     }
 }

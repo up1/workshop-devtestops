@@ -27,9 +27,16 @@ public class UserController : ControllerBase
         {
             return BadRequest("Invalid user data.");
         }
-        
-        // Check if the user already exists
-        return CreatedAtAction(nameof(Get), new { id = user.Id }, await _userRepository.Create(user));
+
+        try
+        {
+            var createdUser = await _userRepository.Create(user);
+            return Ok(createdUser);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
     }
 
 }

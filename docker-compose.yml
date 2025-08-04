@@ -59,6 +59,16 @@ services:
       --reporter-junit-export="reports/results.xml"
     volumes:
       - ./postman/:/etc/newman
+  dotnet-api-test:
+    image: postman/newman:alpine
+    tty: true
+    stdin_open: true
+    command:
+      run dotnet-api.postman_collection.json -k
+      -r cli,junit
+      --reporter-junit-export="reports/results-dotnet.xml"
+    volumes:
+      - ./postman/:/etc/newman
   selenium-hub:
     image: selenium/hub:4.21.0
     ports:
