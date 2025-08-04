@@ -26,6 +26,25 @@ $docker compose up python-api-test --abort-on-container-exit
 ```
 Report is generated in folder `postman/reports/`
 
+## REST API with .NET 
+* https://learn.microsoft.com/en-us/dotnet/core/docker/introduction
+
+### Start PostgreSQL database
+```
+$docker compose up -d postgres
+$docker compose ps
+```
+
+### Build and Run
+```
+$docker compose build dotnet-api
+$docker compose up -d dotnet-api
+$docker compose ps
+```
+
+URL of Swagger or OpenAPI documentation
+* http://localhost:9000/swagger/index.html
+
 ## Web UI Testing with Selenium and Robot framework
 
 ### Run Selenium Grid
