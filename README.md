@@ -2,7 +2,6 @@
 * [Selenium Grid](https://github.com/SeleniumHQ/docker-selenium)
 * [Robotframework](https://robotframework.org/)
 
-
 ## Run Selenium Grid
 ```
 $docker compose up -d selenium-hub
