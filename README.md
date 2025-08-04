@@ -2,6 +2,17 @@
 * [Selenium Grid](https://github.com/SeleniumHQ/docker-selenium)
 * [Robotframework](https://robotframework.org/)
 
+## REST API with Python and [FastAPI](https://fastapi.tiangolo.com/)
+
+### Build and Run
+```
+$docker compose build python-api
+$docker compose up -d python-api
+$docker compose ps
+```
+
+URL of Swagger or OpenAPI documentation
+* http://localhost:8000/docs
 
 
 ## Web UI Testing with Selenium and Robot framework

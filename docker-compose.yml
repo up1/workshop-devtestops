@@ -1,4 +1,13 @@
 services:
+  python-api:
+    build:
+      context: ./python-api
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - FASTAPI_ENV=development
   selenium-hub:
     image: selenium/hub:4.21.0
     ports:
