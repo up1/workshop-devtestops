@@ -51,7 +51,7 @@ $docker compose up dotnet-api-test --abort-on-container-exit
 ```
 Report is generated in folder `postman/reports/`
 
-## Web UI Testing with Selenium and Robot framework
+## 3. Web UI Testing with Selenium and Robot framework
 
 ### Run Selenium Grid
 ```
