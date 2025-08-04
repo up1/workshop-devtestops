@@ -1,15 +1,12 @@
 services:
   selenium-hub:
-    image: selenium/hub
+    image: selenium/hub:4.21.0
     ports:
       - "4442:4442"
       - "4443:4443"
       - "4444:4444"
   chrome:
     image: selenium/node-chrome
-    platform: linux/amd64
-    depends_on:
-      - selenium-hub
     environment:
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442

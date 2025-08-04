@@ -4,6 +4,7 @@ Test Teardown    Close All Browsers
 
 *** Variables ***
 ${URL}    http://www.google.com
+${SELENIUM_URL}    http://selenium-hub:4444/wd/hub
 
 *** Test Cases ***
 Open Browser
