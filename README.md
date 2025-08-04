@@ -22,6 +22,7 @@ URL of Swagger or OpenAPI documentation
 
 ### API testing with Postman and [newman](https://www.npmjs.com/package/newman)
 ```
+$docker compose up python-api-test --abort-on-container-exit
 ```
 
 ## Web UI Testing with Selenium and Robot framework
