@@ -1,0 +1,28 @@
+services:
+  selenium-hub:
+    image: selenium/hub
+    ports:
+      - "4442:4442"
+      - "4443:4443"
+      - "4444:4444"
+  chrome:
+    image: selenium/node-chrome
+    platform: linux/amd64
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+  robot-runner:
+    build:
+      context: ./robot
+      dockerfile: Dockerfile
+    volumes:
+      - ./report/results:/app/results
+    depends_on:
+      - selenium-hub
+      - chrome
+    environment:
+      - SELENIUM_URL=http://selenium-hub:4444/wd/hub
+    command: robot --outputdir /app/results /app/*.robot
