@@ -24,6 +24,7 @@ URL of Swagger or OpenAPI documentation
 ```
 $docker compose up python-api-test --abort-on-container-exit
 ```
+Report is generated in folder `postman/reports/`
 
 ## Web UI Testing with Selenium and Robot framework
 
