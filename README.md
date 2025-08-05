@@ -55,6 +55,24 @@ $docker compose up dotnet-api-test --abort-on-container-exit
 ```
 Report is generated in folder `postman/reports/`
 
+## 4. REST API with Java and SpringBoot
+
+### Start PostgreSQL database
+```
+$docker compose up -d postgres
+$docker compose ps
+```
+
+### Build and Run
+```
+$docker compose build java-api
+$docker compose up -d java-api
+$docker compose ps
+```
+
+URL of Swagger or OpenAPI documentation
+* http://localhost:7070/swagger-ui/index.html
+
 ## 3. Web UI Testing with Selenium and Robot framework
 
 ### Run Selenium Grid
