@@ -25,6 +25,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+// Add ping for health checks
+app.MapGet("/ping", () => "pong");
+
 app.UseHttpsRedirection();
 
 app.Run();
