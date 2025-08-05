@@ -1,6 +1,7 @@
 # DevTestOps
 * Python + FastAPI + PostgreSQL
 * .NET 8 + PostgreSQL
+* Java and SpringBoot
 * API testing with Postman and newman
 * UI Testing
     * [Selenium Grid](https://github.com/SeleniumHQ/docker-selenium)
