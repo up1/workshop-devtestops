@@ -41,8 +41,8 @@ services:
     build:
       context: ./python-api
       dockerfile: Dockerfile
-    ports:
-      - "8000:8000"
+    # ports:
+    #   - "8000:8000"
     environment:
       - PYTHONUNBUFFERED=1
       - FASTAPI_ENV=development
@@ -98,6 +98,7 @@ services:
       - "4444:4444"
   chrome:
     image: selenium/node-chrome
+    platform: linux/amd64
     environment:
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
@@ -108,9 +109,9 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./report/results:/app/results
-    depends_on:
-      - selenium-hub
-      - chrome
+    # depends_on:
+    #   - selenium-hub
+    #   - chrome
     environment:
       - SELENIUM_URL=http://selenium-hub:4444/wd/hub
     command: robot --outputdir /app/results /app/*.robot
